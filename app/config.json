@@ -1,0 +1,14 @@
+{
+    "global": {},
+    "env:development": {},
+    "env:test": {},
+    "env:production": {},
+    "os:android": {},
+    "os:blackberry": {},
+    "os:ios": {},
+    "os:mobileweb": {},
+    "dependencies": {
+        "direction": "1.0",
+        "fr.logger": "1.0"
+    }
+}

@@ -1,0 +1,37 @@
+"#dirContainer": {
+	backgroundColor: '#000000',
+	width: '300px',
+	height:'300px',
+	left:0,
+	top:'50%'
+},
+"#btnHaut": {
+	left:'25%',
+	top:0,
+	height: '50%',
+	width: '50%',
+	backgroundImage : '/direction/triangle-haut.png'
+},
+"#btnDroite": {
+	left:'50%',
+	top:'25%',
+	height: '50%',
+	width: '50%',
+	backgroundImage : '/direction/triangle-droite.png'
+},
+"#btnBas": {
+	left:'25%',
+	top:'50%',
+	height: '50%',
+	width: '50%',
+	backgroundImage : '/direction/triangle-bas.png'
+},
+"#btnGauche": {
+	left:0,
+	top:'25%',
+	height: '50%',
+	width: '50%',
+	backgroundImage : '/direction/triangle-gauche.png'
+}
+
+
