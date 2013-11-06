@@ -1,4 +1,33 @@
 function Controller() {
+    function getInfos() {
+        var urlPrefix = "http://192.168.1.51:8000";
+        WS.getJSON(urlPrefix + "/getInfos", {}, function(data) {
+            Ti.App.fireEvent("logMe", {
+                message: JSON.stringify(data)
+            });
+            if (null === data) {
+                setTimeout(getInfos, 300);
+                return;
+            }
+            var lat = data.data.latitude;
+            var lon = data.data.longitude;
+            var tem = data.data.temperature;
+            $.mapview.region = {
+                latitude: lat,
+                longitude: lon,
+                latitudeDelta: .01,
+                longitudeDelta: .01
+            };
+            $.eDirigeable.applyProperties({
+                latitude: lat,
+                longitude: lon
+            });
+            Ti.App.fireEvent("graph:updateGraph", {
+                value: tem
+            });
+            setTimeout(getInfos, 300);
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,18 +50,25 @@ function Controller() {
         __parentSymbol: $.__views.index
     });
     $.__views.logger.setParent($.__views.index);
+    $.__views.graph = Ti.UI.createWebView({
+        top: "30dp",
+        height: "400px",
+        id: "graph",
+        url: "/graph/chart.html"
+    });
+    $.__views.index.add($.__views.graph);
     var __alloyId1 = [];
-    $.__views.mountainView = Ti.Map.createAnnotation({
+    $.__views.eDirigeable = Ti.Map.createAnnotation({
         latitude: 37.390749,
         longitude: -122.081651,
-        id: "mountainView",
-        title: "Appcelerator Headquarters",
+        id: "eDirigeable",
+        title: "E-Diregeable",
         subtitle: "Mountain View, CA",
         pincolor: Titanium.Map.ANNOTATION_RED,
         leftButton: "/images/appcelerator_small.png",
         myid: "1"
     });
-    __alloyId1.push($.__views.mountainView);
+    __alloyId1.push($.__views.eDirigeable);
     $.__views.mapview = Ti.Map.createView({
         width: "800dp",
         height: "400dp",
@@ -49,11 +85,13 @@ function Controller() {
     $.__views.index.add($.__views.mapview);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var WS = require("Webservice").Webservice;
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
         });
     });
+    getInfos();
     $.index.open();
     _.extend($, exports);
 }

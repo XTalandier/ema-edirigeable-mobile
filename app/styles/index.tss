@@ -6,4 +6,8 @@
 	height: '400dp',
 	right: 0,
 	bottom: '300px'
+},
+"#graph": {
+	top: '30dp',
+	height: '400px'
 }

@@ -60,13 +60,13 @@ function Mock(){
 
 Mock.prototype.getInfos = function(f) {
 	if(this.latitude === undefined){
-		this.latitude = 1.093245;
-		this.longitude = 1.093245;
+		this.latitude = 43.837778;
+		this.longitude = 4.360833;
 		this.temperature = 12;
 	}
 	this.temperature += rnd(0, 3) * aSign();
-	this.latitude    += (Math.random() / 10) * aSign();
-	this.longitude   += (Math.random() / 10) * aSign();
+	this.latitude    += (Math.random() / 1000) * aSign();
+	this.longitude   += (Math.random() / 1000) * aSign();
 	var data = {
 		temperature: this.temperature,
 		latitude: this.latitude,
