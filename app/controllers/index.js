@@ -5,7 +5,7 @@ $.dir.addEventListener("directionChanged", function(direction, e) {
 });
 
 function getInfos(){
-	var urlPrefix = 'http://192.168.1.51:8000';
+	var urlPrefix = 'http://127.0.0.1:8000';
 	WS.getJSON(urlPrefix + '/getInfos', {}, function(data){
 		Ti.App.fireEvent("logMe", {message:JSON.stringify(data)});
 		if(data === null){
