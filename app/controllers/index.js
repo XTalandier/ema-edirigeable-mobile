@@ -1,5 +1,5 @@
 var WS = require('Webservice').Webservice;
-alert("coucou");
+
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
 });
