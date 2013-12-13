@@ -7,11 +7,19 @@ function Controller() {
                 message: JSON.stringify(data)
             });
             if (null === data) {
+<<<<<<< HEAD
                 setTimeout(getInfos, 4e3);
                 return;
             }
             updateData(data);
             setTimeout(getInfos, 4e3);
+=======
+                setTimeout(getInfos, 1e3);
+                return;
+            }
+            updateData(data);
+            setTimeout(getInfos, 1e3);
+>>>>>>> 08ca8479f6db1cb5b4bb23db9359fa3c6ba0ee7a
         });
     }
     function updateData(data) {
