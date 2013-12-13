@@ -21,7 +21,7 @@
 
             <Annotation id="eDirigeable"
               latitude="37.390749" longitude="-122.081651"
-              title="E-Diregeable" subtitle="Mountain View, CA"
+              title="E-Diregeable" subtitle=""
               pincolor="Titanium.Map.ANNOTATION_RED"
               leftButton="/images/appcelerator_small.png"
               myid="1"/>

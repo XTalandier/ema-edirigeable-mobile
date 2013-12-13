@@ -1,31 +1,50 @@
 function Controller() {
     function getInfos() {
+<<<<<<< HEAD
         var urlPrefix = "http://127.0.0.1:8000";
         WS.getJSON(urlPrefix + "/getInfos", {}, function(data) {
+=======
+        WS.postJSON(urlPrefix + "/", {
+            cmdType: "GetInfos"
+        }, function(data) {
+>>>>>>> master_merge
             Ti.App.fireEvent("logMe", {
                 message: JSON.stringify(data)
             });
             if (null === data) {
-                setTimeout(getInfos, 300);
+<<<<<<< HEAD
+                setTimeout(getInfos, 4e3);
                 return;
             }
-            var lat = data.data.latitude;
-            var lon = data.data.longitude;
-            var tem = data.data.temperature;
-            $.mapview.region = {
-                latitude: lat,
-                longitude: lon,
-                latitudeDelta: .01,
-                longitudeDelta: .01
-            };
-            $.eDirigeable.applyProperties({
-                latitude: lat,
-                longitude: lon
-            });
-            Ti.App.fireEvent("graph:updateGraph", {
-                value: tem
-            });
-            setTimeout(getInfos, 300);
+            updateData(data);
+            setTimeout(getInfos, 4e3);
+=======
+                setTimeout(getInfos, 1e3);
+                return;
+            }
+            updateData(data);
+            setTimeout(getInfos, 1e3);
+>>>>>>> 08ca8479f6db1cb5b4bb23db9359fa3c6ba0ee7a
+        });
+    }
+    function updateData(data) {
+        var lat = data.latitude;
+        var lon = data.longitude;
+        var tem = data.measuredTemperature;
+        var dID = data.dirigeableId;
+        $.mapview.region = {
+            latitude: lat,
+            longitude: lon,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        };
+        $.eDirigeable.applyProperties({
+            latitude: lat,
+            longitude: lon,
+            subtitle: dID
+        });
+        Ti.App.fireEvent("graph:updateGraph", {
+            value: tem
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -77,7 +96,7 @@ function Controller() {
         longitude: -122.081651,
         id: "eDirigeable",
         title: "E-Diregeable",
-        subtitle: "Mountain View, CA",
+        subtitle: "",
         pincolor: Titanium.Map.ANNOTATION_RED,
         leftButton: "/images/appcelerator_small.png",
         myid: "1"
@@ -102,9 +121,35 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
+    var urlPrefix = "http://146.19.17.215:8080";
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
+        });
+        var cmds = {
+            cmdType: ""
+        };
+        switch (direction) {
+          case "haut":
+            cmds.cmdType = "Up";
+            break;
+
+          case "droite":
+            cmds.cmdType = "Right";
+            break;
+
+          case "bas":
+            cmds.cmdType = "Down";
+            break;
+
+          case "gauche":
+            cmds.cmdType = "Left";
+        }
+        WS.postJSON(urlPrefix + "/", cmds, function(data) {
+            Ti.App.fireEvent("logMe", {
+                message: "DATA: " + JSON.stringify(data)
+            });
+            updateData(data);
         });
     });
     getInfos();
