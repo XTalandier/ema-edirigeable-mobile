@@ -7,7 +7,8 @@ Webservice.getJSON = function(url, params, callback) {
         var content = JSON.parse(this.responseText);
         callback(content);
     };
-    request.onerror = function() {
+    request.onerror = function(e) {
+        alert("WS Error : " + JSON.stringify(e));
         callback(null);
     };
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

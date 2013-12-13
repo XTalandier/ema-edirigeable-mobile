@@ -1,30 +1,17 @@
 function Controller() {
     function getInfos() {
-<<<<<<< HEAD
-        var urlPrefix = "http://127.0.0.1:8000";
-        WS.getJSON(urlPrefix + "/getInfos", {}, function(data) {
-=======
         WS.postJSON(urlPrefix + "/", {
             cmdType: "GetInfos"
         }, function(data) {
->>>>>>> master_merge
             Ti.App.fireEvent("logMe", {
                 message: JSON.stringify(data)
             });
             if (null === data) {
-<<<<<<< HEAD
                 setTimeout(getInfos, 4e3);
                 return;
             }
             updateData(data);
             setTimeout(getInfos, 4e3);
-=======
-                setTimeout(getInfos, 1e3);
-                return;
-            }
-            updateData(data);
-            setTimeout(getInfos, 1e3);
->>>>>>> 08ca8479f6db1cb5b4bb23db9359fa3c6ba0ee7a
         });
     }
     function updateData(data) {
