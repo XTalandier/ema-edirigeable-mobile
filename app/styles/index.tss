@@ -1,13 +1,30 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#CACACA",
 },
+
+".menu": {
+	backgroundColor:"#CACACA",
+	borderWidth: '1px',
+	borderColor: 'black',
+	top: '20dp',
+	left: '0',
+	width: '33%',
+	height: '33%',
+},
+
 "#mapview": {
-	width: '800dp',
-	height: '400dp',
+	borderWidth: '1px',
+	borderColor: 'black',
+	top: '20dp',
+	width: '70%',
+	height: '50%',
 	right: 0,
-	bottom: '300px'
 },
+
 "#graph": {
-	top: '30dp',
-	height: '400px'
+	top: '60%',
+	width: '70%',
+	height: '50%',
+	right: 0,
+	backgroundColor: '#CACACA',
 }

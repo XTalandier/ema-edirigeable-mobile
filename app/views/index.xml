@@ -1,8 +1,20 @@
 <Alloy>
 	<Window class="container">
+		
+		<WebView class="menu">
+			Le menu Ma gueule !
+		</WebView>
+		
+		<!-- Le pavé directionnel -->
 		<Require type="widget" src="direction" id="dir"/>
+		
+		<!-- La matrice -->
 		<Require type="widget" src="fr.logger" id="logger"/>
+		
+		<!-- LE GRAPH -->
 		<WebView id="graph" url="/graph/chart.html"></WebView>
+		
+		<!-- LA MAP -->
 		<View id="mapview" ns="Ti.Map"
             animate="true" regionFit="true" userLocation="true"
             mapType="Ti.Map.STANDARD_TYPE" >
@@ -17,5 +29,5 @@
             <!-- Place other child views here, such as an ImageView to add an overlay. -->
 
         </View>
-        	</Window>
+    </Window>
 </Alloy>

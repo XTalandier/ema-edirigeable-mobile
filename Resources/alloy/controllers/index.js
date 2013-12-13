@@ -1,6 +1,6 @@
 function Controller() {
     function getInfos() {
-        var urlPrefix = "http://192.168.1.51:8000";
+        var urlPrefix = "http://127.0.0.1:8000";
         WS.getJSON(urlPrefix + "/getInfos", {}, function(data) {
             Ti.App.fireEvent("logMe", {
                 message: JSON.stringify(data)
@@ -36,10 +36,21 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "white",
+        backgroundColor: "#CACACA",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.__alloyId1 = Ti.UI.createWebView({
+        backgroundColor: "#CACACA",
+        borderWidth: "1px",
+        borderColor: "black",
+        top: "20dp",
+        left: "0",
+        width: "33%",
+        height: "33%",
+        id: "__alloyId1"
+    });
+    $.__views.index.add($.__views.__alloyId1);
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
         __parentSymbol: $.__views.index
@@ -51,13 +62,16 @@ function Controller() {
     });
     $.__views.logger.setParent($.__views.index);
     $.__views.graph = Ti.UI.createWebView({
-        top: "30dp",
-        height: "400px",
+        top: "60%",
+        width: "70%",
+        height: "50%",
+        right: 0,
+        backgroundColor: "#CACACA",
         id: "graph",
         url: "/graph/chart.html"
     });
     $.__views.index.add($.__views.graph);
-    var __alloyId1 = [];
+    var __alloyId2 = [];
     $.__views.eDirigeable = Ti.Map.createAnnotation({
         latitude: 37.390749,
         longitude: -122.081651,
@@ -68,13 +82,15 @@ function Controller() {
         leftButton: "/images/appcelerator_small.png",
         myid: "1"
     });
-    __alloyId1.push($.__views.eDirigeable);
+    __alloyId2.push($.__views.eDirigeable);
     $.__views.mapview = Ti.Map.createView({
-        width: "800dp",
-        height: "400dp",
+        borderWidth: "1px",
+        borderColor: "black",
+        top: "20dp",
+        width: "70%",
+        height: "50%",
         right: 0,
-        bottom: "300px",
-        annotations: __alloyId1,
+        annotations: __alloyId2,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",

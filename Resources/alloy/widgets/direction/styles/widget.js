@@ -9,44 +9,46 @@ module.exports = [ {
     priority: 100000.0002,
     key: "dirContainer",
     style: {
-        backgroundColor: "#000000",
-        width: "300px",
-        height: "300px",
+        backgroundColor: "#CACACA",
+        borderWidth: "1px",
+        borderColor: "black",
+        width: "30%",
+        height: "34%",
         left: 0,
-        top: "50%"
+        top: "33%"
     }
 }, {
     isId: true,
     priority: 100000.0003,
     key: "btnHaut",
     style: {
-        left: "25%",
-        top: 0,
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-haut.png"
+        left: "33,5%",
+        top: "0",
+        height: "33,3%",
+        width: "33,4%",
+        backgroundImage: "/direction/button_top.png"
     }
 }, {
     isId: true,
     priority: 100000.0004,
     key: "btnDroite",
     style: {
-        left: "50%",
-        top: "25%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-droite.png"
+        top: "33,3%",
+        left: "66,7%",
+        height: "33,3%",
+        width: "33,3%",
+        backgroundImage: "/direction/button_right.png"
     }
 }, {
     isId: true,
     priority: 100000.0005,
     key: "btnBas",
     style: {
-        left: "25%",
-        top: "50%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-bas.png"
+        left: "33,5%",
+        top: "66,6%",
+        height: "33,3%",
+        width: "33,4%",
+        backgroundImage: "/direction/button_bottom.png"
     }
 }, {
     isId: true,
@@ -54,9 +56,9 @@ module.exports = [ {
     key: "btnGauche",
     style: {
         left: 0,
-        top: "25%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-gauche.png"
+        top: "33,3%",
+        height: "33,3%",
+        width: "33,3%",
+        backgroundImage: "/direction/button_left.png"
     }
 } ];

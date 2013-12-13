@@ -10,7 +10,7 @@ Webservice.getJSON = function(url, params, callback){
 		callback(content);
 	};
 	request.onerror = function(e){
-		alert('WS Error : ' + JSON.stringify(e));
+		//alert('WS Error : ' + JSON.stringify(e));
 		callback(null);
 	};
 	

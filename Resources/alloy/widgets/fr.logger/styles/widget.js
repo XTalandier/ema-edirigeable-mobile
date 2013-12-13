@@ -9,11 +9,13 @@ module.exports = [ {
     priority: 100000.0008,
     key: "logger",
     style: {
-        left: 0,
         bottom: 0,
-        height: "300px",
-        right: 0,
-        color: "#ffffff",
-        backgroundColor: "#000000"
+        width: "30%",
+        height: "33%",
+        left: 0,
+        color: "black",
+        backgroundColor: "#CACACA",
+        borderWidth: "1px",
+        borderColor: "black"
     }
 } ];
