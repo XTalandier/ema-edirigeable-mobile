@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "direction/" + s : s.substring(0, index) + "/direction/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
@@ -34,7 +34,8 @@ function Controller() {
         height: "33,3%",
         width: "33,4%",
         backgroundImage: "/direction/button_top.png",
-        id: "btnHaut"
+        id: "btnHaut",
+        image: "/direction/button_top.png"
     });
     $.__views.dirContainer.add($.__views.btnHaut);
     $.__views.btnDroite = Ti.UI.createImageView({

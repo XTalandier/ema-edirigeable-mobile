@@ -11,10 +11,7 @@ function run() {
         reporter = new (require("tijasmine/tijasmine-console").ConsoleReporter);
 
     tijasmine.addSpecModules(
-        "specs/lib/counter_spec",
-        "specs/model/book_spec",
-        "specs/controller/index_spec",
-        "specs/controller/detail_spec"
+        "specs/lib/webservice_spec"//,
     );
     tijasmine.addReporter(reporter);
     tijasmine.execute();

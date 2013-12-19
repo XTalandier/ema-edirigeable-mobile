@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="dirContainer">
-		<ImageView id="btnHaut" />
+		<ImageView id="btnHaut" image="/direction/button_top.png" />
 		<ImageView id="btnDroite" />
 		<ImageView id="btnBas" />
 		<ImageView id="btnGauche" />

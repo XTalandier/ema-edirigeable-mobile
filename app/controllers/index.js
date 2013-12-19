@@ -1,25 +1,12 @@
 var WS = require('Webservice').Webservice;
+var Ctrl = require('controls').Controls;
+Ctrl = new Ctrl(WS);
 
-var urlPrefix = 'http://146.19.17.215:8080';
+var urlPrefix = '146.19.17.219:8080';//'http://146.19.17.215:8080';
+
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
-	var cmds = {cmdType: ''};
-	switch(direction){
-		case 'haut':
-			cmds.cmdType = 'Up';
-			break;
-		case 'droite':
-			cmds.cmdType = 'Right';
-			break;
-		case 'bas':
-			cmds.cmdType = 'Down';
-			break;
-		case 'gauche':
-			cmds.cmdType = 'Left';
-			break;
-	}
-	WS.postJSON(urlPrefix + '/' , cmds, function(data){
-		Ti.App.fireEvent("logMe", {message : "DATA: " + JSON.stringify(data)});
+	Ctrl.move(direction , function(data){
 		updateData(data);
 	});
 });

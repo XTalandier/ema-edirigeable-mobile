@@ -12,6 +12,8 @@
 //if( Ti.App.deployType !== 'production' )
 //{
 if (Ti.App.deployType !== 'production') {
-	Alloy.CFG.environment = 'test';
-	require('tests_runner').run();
+	//Alloy.CFG.environment = 'test';
+	//require('tests_runner').run();
+	//var srv = require('mockServer');
 }
+
