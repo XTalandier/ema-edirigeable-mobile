@@ -7,7 +7,6 @@
 <body>
 	<canvas id="canvas" height="200" width="1000" style="width: 100%"></canvas>
 	<script type="text/javascript">
-		alert('ici : ' + window.location);
 		var dataLabels = [];
 		var dataValues = [];
 		var maxValues  = 10;
@@ -35,17 +34,22 @@
 
 		ChartObject.Line(interestData, {animation : false});
 		Ti.App.addEventListener("graph:updateGraph", function(e) {
-			dataLabels.push("");
-			dataValues.push(e.value);
-
-			if(dataLabels.length > maxValues){
-				dataLabels.shift();
-				dataValues.shift();
+			alert('ICI : ' + e);
+			try {
+				dataLabels.push("");
+				dataValues.push(e.value);
+	
+				if(dataLabels.length > maxValues){
+					dataLabels.shift();
+					dataValues.shift();
+				}
+	
+				interestData.labels = dataLabels;
+				interestData.datasets[0].data = dataValues;
+				ChartObject.Line(interestData, {animation: false});
+			}catch(ex){
+				alert('EX =>' + ex);
 			}
-
-			interestData.labels = dataLabels;
-			interestData.datasets[0].data = dataValues;
-			ChartObject.Line(interestData, {animation: false});
 		});
 	</script>
 
