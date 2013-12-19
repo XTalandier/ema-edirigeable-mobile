@@ -22,33 +22,33 @@ module.exports = [ {
     priority: 100000.0003,
     key: "btnHaut",
     style: {
-        left: "33,5%",
-        top: "0",
-        height: "33,3%",
-        width: "33,4%",
-        backgroundImage: "button_top.png"
+        left: "33.5%",
+        top: "0%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_top.png"
     }
 }, {
     isId: true,
     priority: 100000.0004,
     key: "btnDroite",
     style: {
-        top: "33,3%",
-        left: "66,7%",
-        height: "33,3%",
-        width: "33,3%",
-        backgroundImage: "button_right.png"
+        top: "33.3%",
+        left: "66.7%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_right.png"
     }
 }, {
     isId: true,
     priority: 100000.0005,
     key: "btnBas",
     style: {
-        left: "33,5%",
-        top: "66,6%",
-        height: "33,3%",
-        width: "33,4%",
-        backgroundImage: "button_bottom.png"
+        left: "33.5%",
+        top: "66.6%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_bottom.png"
     }
 }, {
     isId: true,
@@ -56,9 +56,9 @@ module.exports = [ {
     key: "btnGauche",
     style: {
         left: 0,
-        top: "33,3%",
-        height: "33,3%",
-        width: "33,3%",
-        backgroundImage: "button_left.png"
+        top: "33.3%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_left.png"
     }
 } ];

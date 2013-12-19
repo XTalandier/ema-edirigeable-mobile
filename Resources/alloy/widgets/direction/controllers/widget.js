@@ -29,39 +29,43 @@ function Controller() {
     });
     $.__views.dirContainer && $.addTopLevelView($.__views.dirContainer);
     $.__views.btnHaut = Ti.UI.createImageView({
-        left: "33,5%",
-        top: "0",
-        height: "33,3%",
-        width: "33,4%",
-        backgroundImage: "button_top.png",
-        id: "btnHaut"
+        left: "33.5%",
+        top: "0%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_top.png",
+        id: "btnHaut",
+        image: "/direction/button_top.png"
     });
     $.__views.dirContainer.add($.__views.btnHaut);
     $.__views.btnDroite = Ti.UI.createImageView({
-        top: "33,3%",
-        left: "66,7%",
-        height: "33,3%",
-        width: "33,3%",
-        backgroundImage: "button_right.png",
-        id: "btnDroite"
+        top: "33.3%",
+        left: "66.7%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_right.png",
+        id: "btnDroite",
+        image: "/direction/button_right.png"
     });
     $.__views.dirContainer.add($.__views.btnDroite);
     $.__views.btnBas = Ti.UI.createImageView({
-        left: "33,5%",
-        top: "66,6%",
-        height: "33,3%",
-        width: "33,4%",
-        backgroundImage: "button_bottom.png",
-        id: "btnBas"
+        left: "33.5%",
+        top: "66.6%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_bottom.png",
+        id: "btnBas",
+        image: "/direction/button_bottom.png"
     });
     $.__views.dirContainer.add($.__views.btnBas);
     $.__views.btnGauche = Ti.UI.createImageView({
         left: 0,
-        top: "33,3%",
-        height: "33,3%",
-        width: "33,3%",
-        backgroundImage: "button_left.png",
-        id: "btnGauche"
+        top: "33.3%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_left.png",
+        id: "btnGauche",
+        image: "/direction/button_left.png"
     });
     $.__views.dirContainer.add($.__views.btnGauche);
     exports.destroy = function() {};

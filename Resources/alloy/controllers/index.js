@@ -127,7 +127,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
-    var urlPrefix = "http://146.19.17.120:8080";
+    var urlPrefix = "http://146.19.17.72:8080";
     $.txtIP.value = urlPrefix.replace("http://", "");
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
