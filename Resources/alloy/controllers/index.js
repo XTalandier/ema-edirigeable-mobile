@@ -34,6 +34,10 @@ function Controller() {
             value: tem
         });
     }
+    function save() {
+        urlPrefix = "http://" + $.txtIP.value;
+        alert("ok => " + urlPrefix);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -41,12 +45,13 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "#CACACA",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId1 = Ti.UI.createWebView({
+    $.__views.__alloyId1 = Ti.UI.createView({
         backgroundColor: "#CACACA",
         borderWidth: "1px",
         borderColor: "black",
@@ -57,6 +62,20 @@ function Controller() {
         id: "__alloyId1"
     });
     $.__views.index.add($.__views.__alloyId1);
+    $.__views.txtIP = Ti.UI.createTextField({
+        top: "0%",
+        width: "80%",
+        id: "txtIP"
+    });
+    $.__views.__alloyId1.add($.__views.txtIP);
+    $.__views.btnEnreg = Ti.UI.createButton({
+        top: "20%",
+        width: "80%",
+        id: "btnEnreg",
+        title: "Enregistrer"
+    });
+    $.__views.__alloyId1.add($.__views.btnEnreg);
+    save ? $.__views.btnEnreg.addEventListener("click", save) : __defers["$.__views.btnEnreg!click!save"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
         __parentSymbol: $.__views.index
@@ -108,7 +127,8 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
-    var urlPrefix = "http://146.19.17.215:8080";
+    var urlPrefix = "http://146.19.17.120:8080";
+    $.txtIP.value = urlPrefix.replace("http://", "");
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
@@ -141,6 +161,7 @@ function Controller() {
     });
     getInfos();
     $.index.open();
+    __defers["$.__views.btnEnreg!click!save"] && $.__views.btnEnreg.addEventListener("click", save);
     _.extend($, exports);
 }
 

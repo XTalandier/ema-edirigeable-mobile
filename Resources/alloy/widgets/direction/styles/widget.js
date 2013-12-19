@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "direction/" + s : s.substring(0, index) + "/direction/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 module.exports = [ {
@@ -26,7 +26,7 @@ module.exports = [ {
         top: "0",
         height: "33,3%",
         width: "33,4%",
-        backgroundImage: "/direction/button_top.png"
+        backgroundImage: "button_top.png"
     }
 }, {
     isId: true,
@@ -37,7 +37,7 @@ module.exports = [ {
         left: "66,7%",
         height: "33,3%",
         width: "33,3%",
-        backgroundImage: "/direction/button_right.png"
+        backgroundImage: "button_right.png"
     }
 }, {
     isId: true,
@@ -48,7 +48,7 @@ module.exports = [ {
         top: "66,6%",
         height: "33,3%",
         width: "33,4%",
-        backgroundImage: "/direction/button_bottom.png"
+        backgroundImage: "button_bottom.png"
     }
 }, {
     isId: true,
@@ -59,6 +59,6 @@ module.exports = [ {
         top: "33,3%",
         height: "33,3%",
         width: "33,3%",
-        backgroundImage: "/direction/button_left.png"
+        backgroundImage: "button_left.png"
     }
 } ];

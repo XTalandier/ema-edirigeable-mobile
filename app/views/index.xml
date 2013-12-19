@@ -1,9 +1,10 @@
 <Alloy>
 	<Window class="container">
 		
-		<WebView class="menu">
-			Le menu Ma gueule !
-		</WebView>
+		<View class="menu">
+			<TextField id="txtIP"/>
+			<Button id="btnEnreg" title="Enregistrer" onClick="save" />
+		</View>
 		
 		<!-- Le pavé directionnel -->
 		<Require type="widget" src="direction" id="dir"/>

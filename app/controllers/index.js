@@ -1,6 +1,8 @@
 var WS = require('Webservice').Webservice;
 
-var urlPrefix = 'http://146.19.17.215:8080';
+var urlPrefix = 'http://146.19.17.120:8080';
+$.txtIP.value = urlPrefix.replace('http://', '');
+
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
 	var cmds = {cmdType: ''};
@@ -50,6 +52,11 @@ function updateData(data){
 		});
 		
 		Ti.App.fireEvent('graph:updateGraph', { value: tem });
+}
+
+function save(){
+	urlPrefix = "http://"+ $.txtIP.value;
+	alert('ok => ' + urlPrefix);
 }
 getInfos();
 

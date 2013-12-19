@@ -13,5 +13,5 @@
 //{
 if (Ti.App.deployType !== 'production') {
 	Alloy.CFG.environment = 'test';
-	require('tests_runner').run();
+	//require('tests_runner').run();
 }

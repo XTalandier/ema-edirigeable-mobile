@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "direction/" + s : s.substring(0, index) + "/direction/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
@@ -33,7 +33,7 @@ function Controller() {
         top: "0",
         height: "33,3%",
         width: "33,4%",
-        backgroundImage: "/direction/button_top.png",
+        backgroundImage: "button_top.png",
         id: "btnHaut"
     });
     $.__views.dirContainer.add($.__views.btnHaut);
@@ -42,7 +42,7 @@ function Controller() {
         left: "66,7%",
         height: "33,3%",
         width: "33,3%",
-        backgroundImage: "/direction/button_right.png",
+        backgroundImage: "button_right.png",
         id: "btnDroite"
     });
     $.__views.dirContainer.add($.__views.btnDroite);
@@ -51,7 +51,7 @@ function Controller() {
         top: "66,6%",
         height: "33,3%",
         width: "33,4%",
-        backgroundImage: "/direction/button_bottom.png",
+        backgroundImage: "button_bottom.png",
         id: "btnBas"
     });
     $.__views.dirContainer.add($.__views.btnBas);
@@ -60,7 +60,7 @@ function Controller() {
         top: "33,3%",
         height: "33,3%",
         width: "33,3%",
-        backgroundImage: "/direction/button_left.png",
+        backgroundImage: "button_left.png",
         id: "btnGauche"
     });
     $.__views.dirContainer.add($.__views.btnGauche);
