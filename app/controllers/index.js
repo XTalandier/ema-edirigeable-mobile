@@ -1,6 +1,6 @@
 var WS = require('Webservice').Webservice;
 
-var urlPrefix = 'http://146.19.17.72:8080';
+var urlPrefix = 'http://146.19.17.172:8080';
 $.txtIP.value = urlPrefix.replace('http://', '');
 
 $.dir.addEventListener("directionChanged", function(direction, e) {

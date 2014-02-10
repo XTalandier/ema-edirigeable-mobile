@@ -34,7 +34,6 @@
 
 		ChartObject.Line(interestData, {animation : false});
 		Ti.App.addEventListener("graph:updateGraph", function(e) {
-			alert('ICI : ' + e);
 			try {
 				dataLabels.push("");
 				dataValues.push(e.value);
@@ -48,7 +47,7 @@
 				interestData.datasets[0].data = dataValues;
 				ChartObject.Line(interestData, {animation: false});
 			}catch(ex){
-				alert('EX =>' + ex);
+				//alert('EX =>' + ex);
 			}
 		});
 	</script>
