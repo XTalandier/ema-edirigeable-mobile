@@ -1,6 +1,9 @@
 ".container": {
 	backgroundColor:"#CACACA",
 },
+"#config_win": {
+	backgroundColor:"#CACACA"
+},
 
 ".menu": {
 	backgroundColor:"#CACACA",

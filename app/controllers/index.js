@@ -58,8 +58,12 @@ function save(){
 	urlPrefix = "http://"+ $.txtIP.value;
 	alert('ok => ' + urlPrefix);
 }
-getInfos();
 
+function config(){
+	var winConfig = Alloy.createController('config').getView();
+	winConfig.open();	
+}
+getInfos();
 
 
 $.index.open();
