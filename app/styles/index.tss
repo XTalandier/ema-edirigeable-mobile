@@ -28,3 +28,15 @@
 	right: 0,
 	backgroundColor: '#CACACA',
 }
+
+"#btnEnreg": {
+	top: "20%",
+}
+
+"#btnOptions": {
+	top: "50%",
+}
+
+"#btnFinish": {
+	top: "20%",
+}

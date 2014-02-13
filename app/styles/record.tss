@@ -1,0 +1,32 @@
+
+"#record_view": {
+	top: "40%",
+	width: "40%",
+	height: "20%",
+	backgroundColor:"white",
+	/*borderWidth: '1px',
+	borderColor: 'black',*/
+	opacity: "70%",
+}
+
+".container" : {
+  	
+}
+
+"#label" : {
+	left: "20%",
+}
+
+"#nom_trajet" : {
+	left: "60%",
+}
+
+"#btnCancel": {
+	left: "30%",
+	bottom: "20%"
+}
+
+"#btnSave": {
+	left: "60%",
+	bottom: "20%"
+}

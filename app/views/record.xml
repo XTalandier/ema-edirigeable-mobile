@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container" id="record_win" >
+		<View id="record_view">
+			<Label id="label"> Nom du trajet :</Label> 
+			<TextField id="nom_trajet" value="Trajet 1"></TextField>
+			
+			<Button id="btnCancel" title="Annuler" onClick="back" />
+			<Button id="btnSave" title="Enregistrer" onClick="save" />
+			
+		</View>
+		
+	</Window>
+</Alloy>

@@ -1,4 +1,5 @@
 var WS = require('Webservice').Webservice;
+$.btnFinish.setVisible(false);
 
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
@@ -29,5 +30,25 @@ function getInfos(){
 }
 getInfos();
 
+function record(){
+	var winRecord = Alloy.createController('record').getView();
+	winRecord.open();
+	$.btnEnreg.setVisible(false);
+	$.btnFinish.setVisible(true);
+}
+
+function stop_record(){
+	$.btnEnreg.setVisible(true);
+	$.btnFinish.setVisible(false);
+}
+
+function config(){
+
+}
+
+exports.refreshBtn = function() {
+	$.btnEnreg.setVisible(true);
+	$.btnFinish.setVisible(false);
+}
 
 $.index.open();

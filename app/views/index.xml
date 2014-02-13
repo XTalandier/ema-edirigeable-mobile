@@ -1,9 +1,11 @@
 <Alloy>
 	<Window class="container">
 		
-		<WebView class="menu">
-			Le menu Ma gueule !
-		</WebView>
+		<View class="menu">
+			<Button class="bouton_menu" id="btnEnreg" title="Enregistrer" onClick="record" />
+			<Button class="bouton_menu" id="btnFinish" title="Arrêter" onClick="stop_record" />
+			<Button class="bouton_menu" id="btnOptions" title="Configuration" onClick="config" />
+		</View>
 		
 		<!-- Le pavé directionnel -->
 		<Require type="widget" src="direction" id="dir"/>

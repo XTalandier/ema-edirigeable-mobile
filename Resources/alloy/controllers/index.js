@@ -28,6 +28,17 @@ function Controller() {
             setTimeout(getInfos, 300);
         });
     }
+    function record() {
+        var winRecord = Alloy.createController("record").getView();
+        winRecord.open();
+        $.btnEnreg.setVisible(false);
+        $.btnFinish.setVisible(true);
+    }
+    function stop_record() {
+        $.btnEnreg.setVisible(true);
+        $.btnFinish.setVisible(false);
+    }
+    function config() {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -35,12 +46,13 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "#CACACA",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId1 = Ti.UI.createWebView({
+    $.__views.__alloyId1 = Ti.UI.createView({
         backgroundColor: "#CACACA",
         borderWidth: "1px",
         borderColor: "black",
@@ -51,6 +63,27 @@ function Controller() {
         id: "__alloyId1"
     });
     $.__views.index.add($.__views.__alloyId1);
+    $.__views.btnEnreg = Ti.UI.createButton({
+        top: "20%",
+        id: "btnEnreg",
+        title: "Enregistrer"
+    });
+    $.__views.__alloyId1.add($.__views.btnEnreg);
+    record ? $.__views.btnEnreg.addEventListener("click", record) : __defers["$.__views.btnEnreg!click!record"] = true;
+    $.__views.btnFinish = Ti.UI.createButton({
+        top: "20%",
+        id: "btnFinish",
+        title: "Arrêter"
+    });
+    $.__views.__alloyId1.add($.__views.btnFinish);
+    stop_record ? $.__views.btnFinish.addEventListener("click", stop_record) : __defers["$.__views.btnFinish!click!stop_record"] = true;
+    $.__views.btnOptions = Ti.UI.createButton({
+        top: "50%",
+        id: "btnOptions",
+        title: "Configuration"
+    });
+    $.__views.__alloyId1.add($.__views.btnOptions);
+    config ? $.__views.btnOptions.addEventListener("click", config) : __defers["$.__views.btnOptions!click!config"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
         __parentSymbol: $.__views.index
@@ -102,13 +135,21 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
+    $.btnFinish.setVisible(false);
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
         });
     });
     getInfos();
+    exports.refreshBtn = function() {
+        $.btnEnreg.setVisible(true);
+        $.btnFinish.setVisible(false);
+    };
     $.index.open();
+    __defers["$.__views.btnEnreg!click!record"] && $.__views.btnEnreg.addEventListener("click", record);
+    __defers["$.__views.btnFinish!click!stop_record"] && $.__views.btnFinish.addEventListener("click", stop_record);
+    __defers["$.__views.btnOptions!click!config"] && $.__views.btnOptions.addEventListener("click", config);
     _.extend($, exports);
 }
 
