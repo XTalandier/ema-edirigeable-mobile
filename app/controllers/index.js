@@ -1,5 +1,4 @@
 var WS = require('Webservice').Webservice;
-$.btnFinish.setVisible(false);
 
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
@@ -30,25 +29,39 @@ function getInfos(){
 }
 getInfos();
 
-function record(){
-	var winRecord = Alloy.createController('record').getView();
+var winRecord = null;
+function btnRecord_click(){
+	winRecord = Alloy.createController('record').getView();
 	winRecord.open();
+}
+
+Ti.App.addEventListener("index:closeRecord", function(data) {
+	closeWinRecord();
+});
+
+Ti.App.addEventListener("index:startRecord", function(data) {
+	startRecord(data.nom_trajet);
+});
+
+function closeWinRecord(){
+	winRecord.close();
+	winRecord=null;
+}
+
+function startRecord(nom_trajet){
+	closeWinRecord();
+	Ti.App.trajet = nom_trajet;
 	$.btnEnreg.setVisible(false);
 	$.btnFinish.setVisible(true);
 }
 
-function stop_record(){
+function stopRecord(){
 	$.btnEnreg.setVisible(true);
 	$.btnFinish.setVisible(false);
 }
 
 function config(){
 
-}
-
-exports.refreshBtn = function() {
-	$.btnEnreg.setVisible(true);
-	$.btnFinish.setVisible(false);
 }
 
 $.index.open();

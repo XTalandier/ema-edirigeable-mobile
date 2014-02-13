@@ -1,14 +1,11 @@
 function Controller() {
     function back() {
-        $.record_win.close();
-        $.record_win = null;
-        var controller = Alloy.createController("index");
-        controller.refreshBtn();
+        Ti.App.fireEvent("index:closeRecord", {});
     }
     function save() {
-        Ti.App.trajet = $.nom_trajet.getValue();
-        $.record_win.close();
-        $.record_win = null;
+        Ti.App.fireEvent("index:startRecord", {
+            nom_trajet: $.nom_trajet.getValue()
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "record";

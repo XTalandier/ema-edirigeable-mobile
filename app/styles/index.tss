@@ -39,4 +39,5 @@
 
 "#btnFinish": {
 	top: "20%",
+	visible: "false",
 }

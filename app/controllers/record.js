@@ -1,15 +1,7 @@
 function back() {
-	$.record_win.close();
-	$.record_win=null;
-	//$.index.refreshBtn();
-	var controller = Alloy.createController('index');
-	controller.refreshBtn();
+	Ti.App.fireEvent('index:closeRecord', {});
 }
 
 function save() {
-	Ti.App.trajet = $.nom_trajet.getValue();
-	$.record_win.close();
-	$.record_win=null;	
-
-	//alert(Ti.App.trajet);
+	Ti.App.fireEvent('index:startRecord', { nom_trajet: $.nom_trajet.getValue() });
 }

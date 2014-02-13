@@ -4,8 +4,6 @@
 	width: "40%",
 	height: "20%",
 	backgroundColor:"white",
-	/*borderWidth: '1px',
-	borderColor: 'black',*/
 	opacity: "70%",
 }
 

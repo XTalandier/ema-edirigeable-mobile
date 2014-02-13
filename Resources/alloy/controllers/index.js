@@ -28,13 +28,21 @@ function Controller() {
             setTimeout(getInfos, 300);
         });
     }
-    function record() {
-        var winRecord = Alloy.createController("record").getView();
+    function btnRecord_click() {
+        winRecord = Alloy.createController("record").getView();
         winRecord.open();
+    }
+    function closeWinRecord() {
+        winRecord.close();
+        winRecord = null;
+    }
+    function startRecord(nom_trajet) {
+        closeWinRecord();
+        Ti.App.trajet = nom_trajet;
         $.btnEnreg.setVisible(false);
         $.btnFinish.setVisible(true);
     }
-    function stop_record() {
+    function stopRecord() {
         $.btnEnreg.setVisible(true);
         $.btnFinish.setVisible(false);
     }
@@ -69,14 +77,15 @@ function Controller() {
         title: "Enregistrer"
     });
     $.__views.__alloyId1.add($.__views.btnEnreg);
-    record ? $.__views.btnEnreg.addEventListener("click", record) : __defers["$.__views.btnEnreg!click!record"] = true;
+    btnRecord_click ? $.__views.btnEnreg.addEventListener("click", btnRecord_click) : __defers["$.__views.btnEnreg!click!btnRecord_click"] = true;
     $.__views.btnFinish = Ti.UI.createButton({
         top: "20%",
+        visible: "false",
         id: "btnFinish",
         title: "Arrêter"
     });
     $.__views.__alloyId1.add($.__views.btnFinish);
-    stop_record ? $.__views.btnFinish.addEventListener("click", stop_record) : __defers["$.__views.btnFinish!click!stop_record"] = true;
+    stopRecord ? $.__views.btnFinish.addEventListener("click", stopRecord) : __defers["$.__views.btnFinish!click!stopRecord"] = true;
     $.__views.btnOptions = Ti.UI.createButton({
         top: "50%",
         id: "btnOptions",
@@ -135,20 +144,22 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
-    $.btnFinish.setVisible(false);
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
         });
     });
     getInfos();
-    exports.refreshBtn = function() {
-        $.btnEnreg.setVisible(true);
-        $.btnFinish.setVisible(false);
-    };
+    var winRecord = null;
+    Ti.App.addEventListener("index:closeRecord", function() {
+        closeWinRecord();
+    });
+    Ti.App.addEventListener("index:startRecord", function(data) {
+        startRecord(data.nom_trajet);
+    });
     $.index.open();
-    __defers["$.__views.btnEnreg!click!record"] && $.__views.btnEnreg.addEventListener("click", record);
-    __defers["$.__views.btnFinish!click!stop_record"] && $.__views.btnFinish.addEventListener("click", stop_record);
+    __defers["$.__views.btnEnreg!click!btnRecord_click"] && $.__views.btnEnreg.addEventListener("click", btnRecord_click);
+    __defers["$.__views.btnFinish!click!stopRecord"] && $.__views.btnFinish.addEventListener("click", stopRecord);
     __defers["$.__views.btnOptions!click!config"] && $.__views.btnOptions.addEventListener("click", config);
     _.extend($, exports);
 }
