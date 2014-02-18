@@ -1,13 +1,13 @@
 
 "#config_view" : {
 	backgroundColor: '#fff',
-	width: '500px',
-	height: '300px',
+	width: '40%',
+	height: '35%',
 }
 
 "TextField" : {
 	backgroundColor: '#CACACA',
-	width : '100px'
+	width : '8%'
 }
 
 ".c1" : {
