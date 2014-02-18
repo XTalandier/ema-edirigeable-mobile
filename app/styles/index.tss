@@ -1,11 +1,11 @@
 ".container": {
-	backgroundColor:"#CACACA",
+	backgroundColor:"#f3f3f3",
 },
 
 ".menu": {
-	backgroundColor:"#CACACA",
+	backgroundColor:"#f3f3f3",
 	borderWidth: '1px',
-	borderColor: 'black',
+	borderColor: '#d9d9d9',
 	top: '20dp',
 	left: '0',
 	width: '33%',
@@ -14,7 +14,7 @@
 
 "#mapview": {
 	borderWidth: '1px',
-	borderColor: 'black',
+	borderColor: '#d9d9d9',
 	top: '20dp',
 	width: '70%',
 	height: '50%',
@@ -26,7 +26,7 @@
 	width: '70%',
 	height: '50%',
 	right: 0,
-	backgroundColor: '#CACACA',
+	backgroundColor: '#f3f3f3',
 }
 
 "#btnEnreg": {
@@ -41,3 +41,7 @@
 	top: "20%",
 	visible: "false",
 }
+
+"#logo": {
+	backgroundImage : 'logo.png'
+},

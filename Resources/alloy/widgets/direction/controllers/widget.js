@@ -18,9 +18,9 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.dirContainer = Ti.UI.createView({
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#d9d9d9",
         width: "30%",
         height: "34%",
         left: 0,

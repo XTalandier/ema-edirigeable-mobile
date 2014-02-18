@@ -9,9 +9,9 @@ module.exports = [ {
     priority: 100000.0002,
     key: "dirContainer",
     style: {
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#d9d9d9",
         width: "30%",
         height: "34%",
         left: 0,

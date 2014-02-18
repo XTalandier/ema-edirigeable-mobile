@@ -56,14 +56,14 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
     $.__views.__alloyId1 = Ti.UI.createView({
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#d9d9d9",
         top: "20dp",
         left: "0",
         width: "33%",
@@ -98,17 +98,17 @@ function Controller() {
         __parentSymbol: $.__views.index
     });
     $.__views.dir.setParent($.__views.index);
-    $.__views.logger = Alloy.createWidget("fr.logger", "widget", {
-        id: "logger",
-        __parentSymbol: $.__views.index
+    $.__views.logo = Ti.UI.createImageView({
+        backgroundImage: "logo.png",
+        id: "logo"
     });
-    $.__views.logger.setParent($.__views.index);
+    $.__views.index.add($.__views.logo);
     $.__views.graph = Ti.UI.createWebView({
         top: "60%",
         width: "70%",
         height: "50%",
         right: 0,
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         id: "graph",
         url: "/graph/chart.html"
     });
@@ -127,7 +127,7 @@ function Controller() {
     __alloyId2.push($.__views.eDirigeable);
     $.__views.mapview = Ti.Map.createView({
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#d9d9d9",
         top: "20dp",
         width: "70%",
         height: "50%",

@@ -11,7 +11,8 @@
 		<Require type="widget" src="direction" id="dir"/>
 		
 		<!-- La matrice -->
-		<Require type="widget" src="fr.logger" id="logger"/>
+		<!--<Require type="widget" src="fr.logger" id="logger"/>-->
+		<ImageView id="logo" />
 		
 		<!-- LE GRAPH -->
 		<WebView id="graph" url="/graph/chart.html"></WebView>

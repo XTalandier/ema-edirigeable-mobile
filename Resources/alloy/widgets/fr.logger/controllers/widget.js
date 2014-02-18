@@ -20,9 +20,9 @@ function Controller() {
         height: "33%",
         left: 0,
         color: "black",
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f3f3f3",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#d9d9d9",
         id: "logger",
         editable: "false"
     });
