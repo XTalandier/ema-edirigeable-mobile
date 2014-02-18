@@ -22,14 +22,14 @@ $.dir.addEventListener("directionChanged", function(direction, e) {
 			cmds.cmdType = 'Left';
 			break;
 	}
-	WS.postJSON(urlPrefix + '/' , cmds, function(data){
+	WS.postJSON(cmds, function(data){
 		Ti.App.fireEvent("logMe", {message : "DATA: " + JSON.stringify(data)});
 		updateData(data);
 	});
 });
 
 function getInfos(){
-	WS.postJSON(urlPrefix + '/', {cmdType: 'GetInfos'}, function(data){
+	WS.postJSON({cmdType: 'GetInfos'}, function(data){
 		Ti.App.fireEvent("logMe", {message:JSON.stringify(data)});
 		if(data === null){
 			setTimeout(getInfos, 4000);
@@ -56,9 +56,17 @@ function updateData(data){
 		Ti.App.fireEvent('graph:updateGraph', { value: tem });
 }
 
+/*
 function save(){
-	urlPrefix = "http://"+ $.txtIP.value;
+	//urlPrefix = "http://"+ $.txtIP.value;
 	alert('ok => ' + urlPrefix);
+}
+*/
+
+
+function config(){
+	var winConfig = Alloy.createController('config').getView();
+	winConfig.open();	
 }
 getInfos();
 
@@ -93,9 +101,6 @@ function stopRecord(){
 	$.btnFinish.setVisible(false);
 }
 
-function config(){
-
-}
 
 
 $.index.open();

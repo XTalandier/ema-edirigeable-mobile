@@ -1,16 +1,20 @@
 function Webservice() {
-
 }
 
-Webservice.getJSON = function(url, params, callback) {
+Webservice.getUrl = function(){
+	return Ti.App.addressip + ':' + Ti.App.port + '/';
+};
+
+Webservice.getJSON = function(params, callback) {
 	var request = Titanium.Network.createHTTPClient();
-	request.open('GET', url);
+	request.open('GET', Webservice.getUrl());
 	request.onload = function() {
 		var content = JSON.parse(this.responseText);
 		callback(content);
 	};
 	request.onerror = function(e) {
-		alert('WS Error : ' + JSON.stringify(e));
+		Ti.App.fireEvent("logMe", {message:'WS Error URL : ' + Webservice.getUrl()});
+		Ti.App.fireEvent("logMe", {message:'WS Error : ' + JSON.stringify(e)});
 		callback(null);
 	};
 
@@ -18,15 +22,16 @@ Webservice.getJSON = function(url, params, callback) {
 	request.send();
 };
 
-Webservice.postJSON = function(url, params, callback) {
+Webservice.postJSON = function(params, callback) {
 	var request = Titanium.Network.createHTTPClient();
 	//request.timeout = 100;
-	request.open('POST', url);
+	request.open('POST', Webservice.getUrl());
 	request.onload = function() {
 		var content = JSON.parse(this.responseText);
 		callback(content);
 	};
 	request.onerror = function(e) {
+		Ti.App.fireEvent("logMe", {message:'WS Error URL : ' + Webservice.getUrl()});
 		Ti.App.fireEvent("logMe", {message:'WS Error : ' + JSON.stringify(e)});
 		callback(null);
 	};

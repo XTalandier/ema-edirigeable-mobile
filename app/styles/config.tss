@@ -1,0 +1,43 @@
+
+"#config_view" : {
+	backgroundColor: '#fff',
+	width: '500px',
+	height: '300px',
+}
+
+"TextField" : {
+	backgroundColor: '#CACACA',
+	width : '100px'
+}
+
+".c1" : {
+	left : '20%'
+}
+
+".c2" : {
+	left : '60%'	
+}
+
+".l1" : {
+	top : '10%'
+}
+
+".l2" : {
+	top : '20%'
+}
+
+".l3" : {
+	top : '30%'
+}
+
+".l4" : {
+	top : '40%'
+}
+
+".l5" : {
+	top : '50%'
+}
+
+".l6" : {
+	top : '60%'
+}

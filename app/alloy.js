@@ -17,3 +17,8 @@ if (Ti.App.deployType !== 'production') {
 	Alloy.CFG.environment = 'test';
 	//require('tests_runner').run();
 }
+
+Ti.App.addressip = '0.0.0.0';
+Ti.App.port = "8080";
+Ti.App.intervalle = "10";
+Ti.App.modeconsole = false;

@@ -1,6 +1,6 @@
 function Controller() {
     function getInfos() {
-        WS.postJSON(urlPrefix + "/", {
+        WS.postJSON({
             cmdType: "GetInfos"
         }, function(data) {
             Ti.App.fireEvent("logMe", {
@@ -34,6 +34,10 @@ function Controller() {
             value: tem
         });
     }
+    function config() {
+        var winConfig = Alloy.createController("config").getView();
+        winConfig.open();
+    }
     function btnRecord_click() {
         winRecord = Alloy.createController("record").getView();
         winRecord.open();
@@ -52,7 +56,6 @@ function Controller() {
         $.btnEnreg.setVisible(true);
         $.btnFinish.setVisible(false);
     }
-    function config() {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -66,7 +69,7 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId1 = Ti.UI.createView({
+    $.__views.__alloyId8 = Ti.UI.createView({
         backgroundColor: "#CACACA",
         borderWidth: "1px",
         borderColor: "black",
@@ -74,15 +77,15 @@ function Controller() {
         left: "0",
         width: "33%",
         height: "33%",
-        id: "__alloyId1"
+        id: "__alloyId8"
     });
-    $.__views.index.add($.__views.__alloyId1);
+    $.__views.index.add($.__views.__alloyId8);
     $.__views.btnEnreg = Ti.UI.createButton({
         top: "20%",
         id: "btnEnreg",
         title: "Enregistrer"
     });
-    $.__views.__alloyId1.add($.__views.btnEnreg);
+    $.__views.__alloyId8.add($.__views.btnEnreg);
     btnRecord_click ? $.__views.btnEnreg.addEventListener("click", btnRecord_click) : __defers["$.__views.btnEnreg!click!btnRecord_click"] = true;
     $.__views.btnFinish = Ti.UI.createButton({
         top: "20%",
@@ -90,14 +93,14 @@ function Controller() {
         id: "btnFinish",
         title: "Arrêter"
     });
-    $.__views.__alloyId1.add($.__views.btnFinish);
+    $.__views.__alloyId8.add($.__views.btnFinish);
     stopRecord ? $.__views.btnFinish.addEventListener("click", stopRecord) : __defers["$.__views.btnFinish!click!stopRecord"] = true;
     $.__views.btnOptions = Ti.UI.createButton({
         top: "50%",
         id: "btnOptions",
         title: "Configuration"
     });
-    $.__views.__alloyId1.add($.__views.btnOptions);
+    $.__views.__alloyId8.add($.__views.btnOptions);
     config ? $.__views.btnOptions.addEventListener("click", config) : __defers["$.__views.btnOptions!click!config"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
@@ -119,7 +122,7 @@ function Controller() {
         url: "/graph/chart.html"
     });
     $.__views.index.add($.__views.graph);
-    var __alloyId2 = [];
+    var __alloyId9 = [];
     $.__views.eDirigeable = Ti.Map.createAnnotation({
         latitude: 37.390749,
         longitude: -122.081651,
@@ -130,7 +133,7 @@ function Controller() {
         leftButton: "/images/appcelerator_small.png",
         myid: "1"
     });
-    __alloyId2.push($.__views.eDirigeable);
+    __alloyId9.push($.__views.eDirigeable);
     $.__views.mapview = Ti.Map.createView({
         borderWidth: "1px",
         borderColor: "black",
@@ -138,7 +141,7 @@ function Controller() {
         width: "70%",
         height: "50%",
         right: 0,
-        annotations: __alloyId2,
+        annotations: __alloyId9,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",
@@ -150,7 +153,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
-    var urlPrefix = "http://146.19.17.198:8000";
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
@@ -174,7 +176,7 @@ function Controller() {
           case "gauche":
             cmds.cmdType = "Left";
         }
-        WS.postJSON(urlPrefix + "/", cmds, function(data) {
+        WS.postJSON(cmds, function(data) {
             Ti.App.fireEvent("logMe", {
                 message: "DATA: " + JSON.stringify(data)
             });

@@ -7,9 +7,12 @@
 			<Button class="bouton_menu" id="btnOptions" title="Configuration" onClick="config" />
 <!--
 			<TextField id="txtIP"/>
+			<Button id="btnOptions" title="Configuration" onClick="config" />
 			<Button id="btnEnreg" title="Enregistrer" onClick="save" />
 -->
 		</View>
+
+
 		
 		<!-- Le pavé directionnel -->
 		<Require type="widget" src="direction" id="dir"/>
