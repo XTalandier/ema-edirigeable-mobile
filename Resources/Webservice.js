@@ -7,11 +7,29 @@ Webservice.getJSON = function(url, params, callback) {
         var content = JSON.parse(this.responseText);
         callback(content);
     };
-    request.onerror = function() {
+    request.onerror = function(e) {
+        alert("WS Error : " + JSON.stringify(e));
         callback(null);
     };
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
+};
+
+Webservice.postJSON = function(url, params, callback) {
+    var request = Titanium.Network.createHTTPClient();
+    request.open("POST", url);
+    request.onload = function() {
+        var content = JSON.parse(this.responseText);
+        callback(content);
+    };
+    request.onerror = function(e) {
+        Ti.App.fireEvent("logMe", {
+            message: "WS Error : " + JSON.stringify(e)
+        });
+        callback(null);
+    };
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(JSON.stringify(params));
 };
 
 exports.Webservice = Webservice;

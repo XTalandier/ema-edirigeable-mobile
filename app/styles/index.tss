@@ -27,21 +27,29 @@
 	height: '50%',
 	right: 0,
 	backgroundColor: '#f3f3f3',
-}
+},
+"#txtIP" : {
+	top: '0%',
+	width: '80%'
+},
+"#btnEnreg" : {
+	top: '20%',
+	width: '80%'
+},
 
 "#btnEnreg": {
 	top: "20%",
-}
+},
 
 "#btnOptions": {
 	top: "50%",
-}
+},
 
 "#btnFinish": {
 	top: "20%",
 	visible: "false",
-}
+},
 
 "#logo": {
 	backgroundImage : 'logo.png'
-},
+}

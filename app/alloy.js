@@ -11,3 +11,9 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 Alloy.Globals.trajet = "";
+//if( Ti.App.deployType !== 'production' )
+//{
+if (Ti.App.deployType !== 'production') {
+	Alloy.CFG.environment = 'test';
+	//require('tests_runner').run();
+}
