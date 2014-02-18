@@ -1,7 +1,9 @@
 var WS = require('Webservice').Webservice;
 
-var urlPrefix = 'http://146.19.17.172:8080';
-$.txtIP.value = urlPrefix.replace('http://', '');
+//var urlPrefix = 'http://146.19.17.172:8080';
+var urlPrefix = 'http://146.19.17.198:8000';
+
+//$.txtIP.value = urlPrefix.replace('http://', '');
 
 $.dir.addEventListener("directionChanged", function(direction, e) {
 	Ti.App.fireEvent("logMe", {message : "Direction: " + direction});
@@ -60,6 +62,40 @@ function save(){
 }
 getInfos();
 
+var winRecord = null;
+function btnRecord_click(){
+	winRecord = Alloy.createController('record').getView();
+	winRecord.open();
+}
+
+Ti.App.addEventListener("index:closeRecord", function(data) {
+	closeWinRecord();
+});
+
+Ti.App.addEventListener("index:startRecord", function(data) {
+	startRecord(data.nom_trajet);
+});
+
+function closeWinRecord(){
+	winRecord.close();
+	winRecord=null;
+}
+
+function startRecord(nom_trajet){
+	closeWinRecord();
+	Ti.App.trajet = nom_trajet;
+	$.btnEnreg.setVisible(false);
+	$.btnFinish.setVisible(true);
+}
+
+function stopRecord(){
+	$.btnEnreg.setVisible(true);
+	$.btnFinish.setVisible(false);
+}
+
+function config(){
+
+}
 
 
 $.index.open();

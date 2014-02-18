@@ -34,10 +34,25 @@ function Controller() {
             value: tem
         });
     }
-    function save() {
-        urlPrefix = "http://" + $.txtIP.value;
-        alert("ok => " + urlPrefix);
+    function btnRecord_click() {
+        winRecord = Alloy.createController("record").getView();
+        winRecord.open();
     }
+    function closeWinRecord() {
+        winRecord.close();
+        winRecord = null;
+    }
+    function startRecord(nom_trajet) {
+        closeWinRecord();
+        Ti.App.trajet = nom_trajet;
+        $.btnEnreg.setVisible(false);
+        $.btnFinish.setVisible(true);
+    }
+    function stopRecord() {
+        $.btnEnreg.setVisible(true);
+        $.btnFinish.setVisible(false);
+    }
+    function config() {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -62,20 +77,28 @@ function Controller() {
         id: "__alloyId1"
     });
     $.__views.index.add($.__views.__alloyId1);
-    $.__views.txtIP = Ti.UI.createTextField({
-        top: "0%",
-        width: "80%",
-        id: "txtIP"
-    });
-    $.__views.__alloyId1.add($.__views.txtIP);
     $.__views.btnEnreg = Ti.UI.createButton({
         top: "20%",
-        width: "80%",
         id: "btnEnreg",
         title: "Enregistrer"
     });
     $.__views.__alloyId1.add($.__views.btnEnreg);
-    save ? $.__views.btnEnreg.addEventListener("click", save) : __defers["$.__views.btnEnreg!click!save"] = true;
+    btnRecord_click ? $.__views.btnEnreg.addEventListener("click", btnRecord_click) : __defers["$.__views.btnEnreg!click!btnRecord_click"] = true;
+    $.__views.btnFinish = Ti.UI.createButton({
+        top: "20%",
+        visible: "false",
+        id: "btnFinish",
+        title: "Arrêter"
+    });
+    $.__views.__alloyId1.add($.__views.btnFinish);
+    stopRecord ? $.__views.btnFinish.addEventListener("click", stopRecord) : __defers["$.__views.btnFinish!click!stopRecord"] = true;
+    $.__views.btnOptions = Ti.UI.createButton({
+        top: "50%",
+        id: "btnOptions",
+        title: "Configuration"
+    });
+    $.__views.__alloyId1.add($.__views.btnOptions);
+    config ? $.__views.btnOptions.addEventListener("click", config) : __defers["$.__views.btnOptions!click!config"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
         __parentSymbol: $.__views.index
@@ -127,8 +150,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
-    var urlPrefix = "http://146.19.17.172:8080";
-    $.txtIP.value = urlPrefix.replace("http://", "");
+    var urlPrefix = "http://146.19.17.198:8000";
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
@@ -160,8 +182,17 @@ function Controller() {
         });
     });
     getInfos();
+    var winRecord = null;
+    Ti.App.addEventListener("index:closeRecord", function() {
+        closeWinRecord();
+    });
+    Ti.App.addEventListener("index:startRecord", function(data) {
+        startRecord(data.nom_trajet);
+    });
     $.index.open();
-    __defers["$.__views.btnEnreg!click!save"] && $.__views.btnEnreg.addEventListener("click", save);
+    __defers["$.__views.btnEnreg!click!btnRecord_click"] && $.__views.btnEnreg.addEventListener("click", btnRecord_click);
+    __defers["$.__views.btnFinish!click!stopRecord"] && $.__views.btnFinish.addEventListener("click", stopRecord);
+    __defers["$.__views.btnOptions!click!config"] && $.__views.btnOptions.addEventListener("click", config);
     _.extend($, exports);
 }
 
