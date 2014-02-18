@@ -27,6 +27,14 @@
 	height: '50%',
 	right: 0,
 	backgroundColor: '#CACACA',
+},
+"#txtIP" : {
+	top: '0%',
+	width: '80%'
+}
+"#btnEnreg" : {
+	top: '20%',
+	width: '80%'
 }
 
 "#btnEnreg": {
