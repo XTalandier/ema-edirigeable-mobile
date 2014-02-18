@@ -39,3 +39,16 @@
 	top: '20%',
 	width: '80%'
 }
+
+"#btnEnreg": {
+	top: "20%",
+}
+
+"#btnOptions": {
+	top: "50%",
+}
+
+"#btnFinish": {
+	top: "20%",
+	visible: "false",
+}

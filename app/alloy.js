@@ -9,6 +9,8 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+Alloy.Globals.trajet = "";
 //if( Ti.App.deployType !== 'production' )
 //{
 if (Ti.App.deployType !== 'production') {

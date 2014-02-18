@@ -1,12 +1,11 @@
-
 function Save () {
 	Ti.App.addressip = $.adresseIP.getValue();
 	Ti.App.port = $.port.getValue();
 	Ti.App.intervalle = $.intervalle.getValue();
 	Ti.App.modeconsole = $.modeConsole.getValue();
-	
-  $.config_win.close();
-  $.config_win=null;
+	$.config_win.close();
+	$.config_win=null;
+
 }
 
 function back () {
