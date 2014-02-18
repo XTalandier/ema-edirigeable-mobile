@@ -4,12 +4,12 @@ Alloy.Globals.trajet = "";
 
 "production" !== Ti.App.deployType && (Alloy.CFG.environment = "test");
 
-Ti.App.addressip = "0.0.0.0";
+Ti.App.addressip = Ti.App.Properties.getString("addressip", "0.0.0.0");
 
-Ti.App.port = "8080";
+Ti.App.port = Ti.App.Properties.getString("port", "8080");
 
-Ti.App.intervalle = "10";
+Ti.App.intervalle = Ti.App.Properties.getInt("intervalle", 10);
 
-Ti.App.modeconsole = false;
+Ti.App.modeconsole = Ti.App.Properties.getBool("modeconsole", true);
 
 Alloy.createController("index");
