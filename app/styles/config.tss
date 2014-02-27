@@ -2,7 +2,7 @@
 "#config_view" : {
 	backgroundColor: '#fff',
 	width: '40%',
-	height: '35%',
+	height: '55%',
 }
 
 "TextField" : {
@@ -35,9 +35,9 @@
 }
 
 ".l5" : {
-	top : '50%'
+	top : '55%'
 }
 
 ".l6" : {
-	top : '70%'
+	top : '75%'
 }

@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId14() {
-        __alloyId14.opts || {};
-        var models = __alloyId13.models;
+    function __alloyId13() {
+        __alloyId13.opts || {};
+        var models = __alloyId12.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId11 = models[i];
-            __alloyId11.__transform = {};
-            var __alloyId12 = Alloy.createController("rowTrajet", {
-                $model: __alloyId11
+            var __alloyId10 = models[i];
+            __alloyId10.__transform = {};
+            var __alloyId11 = Alloy.createController("rowTrajet", {
+                $model: __alloyId10
             });
-            rows.push(__alloyId12.getViewEx({
+            rows.push(__alloyId11.getViewEx({
                 recurse: true
             }));
         }
@@ -39,11 +39,11 @@ function Controller() {
         id: "trajetTable"
     });
     $.__views.trajetsWin.add($.__views.trajetTable);
-    var __alloyId13 = Alloy.Collections["trajets"] || trajets;
-    __alloyId13.on("fetch destroy change add remove reset", __alloyId14);
+    var __alloyId12 = Alloy.Collections["trajets"] || trajets;
+    __alloyId12.on("fetch destroy change add remove reset", __alloyId13);
     showDetail ? $.__views.trajetTable.addEventListener("click", showDetail) : __defers["$.__views.trajetTable!click!showDetail"] = true;
     exports.destroy = function() {
-        __alloyId13.off("fetch destroy change add remove reset", __alloyId14);
+        __alloyId12.off("fetch destroy change add remove reset", __alloyId13);
     };
     _.extend($, $.__views);
     var trajets = Alloy.Collections.trajets;

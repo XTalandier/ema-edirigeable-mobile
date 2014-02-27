@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "fr.logger/" + s : s.substring(0, index) + "/fr.logger/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
@@ -16,13 +16,16 @@ function Controller() {
     var exports = {};
     $.__views.logger = Ti.UI.createTextArea({
         bottom: 0,
-        width: "30%",
+        width: "25%",
         height: "33%",
         left: 0,
         color: "black",
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f1f1f1",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#cccccc",
+        font: {
+            fontSize: 12
+        },
         id: "logger",
         editable: "false"
     });
