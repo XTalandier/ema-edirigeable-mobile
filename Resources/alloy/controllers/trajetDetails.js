@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId14() {
-        __alloyId14.opts || {};
-        var models = whereFunction(__alloyId13);
+    function __alloyId13() {
+        __alloyId13.opts || {};
+        var models = whereFunction(__alloyId12);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId11 = models[i];
-            __alloyId11.__transform = transformFunction(__alloyId11);
-            var __alloyId12 = Alloy.createController("rowPoint", {
-                $model: __alloyId11
+            var __alloyId10 = models[i];
+            __alloyId10.__transform = transformFunction(__alloyId10);
+            var __alloyId11 = Alloy.createController("rowPoint", {
+                $model: __alloyId10
             });
-            rows.push(__alloyId12.getViewEx({
+            rows.push(__alloyId11.getViewEx({
                 recurse: true
             }));
         }
@@ -42,10 +42,10 @@ function Controller() {
         id: "pointsTable"
     });
     $.__views.pointsWin.add($.__views.pointsTable);
-    var __alloyId13 = Alloy.Collections["points"] || points;
-    __alloyId13.on("fetch destroy change add remove reset", __alloyId14);
+    var __alloyId12 = Alloy.Collections["points"] || points;
+    __alloyId12.on("fetch destroy change add remove reset", __alloyId13);
     exports.destroy = function() {
-        __alloyId13.off("fetch destroy change add remove reset", __alloyId14);
+        __alloyId12.off("fetch destroy change add remove reset", __alloyId13);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};

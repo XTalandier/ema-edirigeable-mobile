@@ -15,6 +15,7 @@ function Controller() {
         });
     }
     function updateData(data) {
+        if (null === data) return;
         var lat = data.latitude;
         var lon = data.longitude;
         var tem = data.measuredTemperature;
@@ -111,27 +112,27 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f1f1f1",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId8 = Ti.UI.createView({
-        backgroundColor: "#CACACA",
+    $.__views.__alloyId7 = Ti.UI.createView({
+        backgroundColor: "#f1f1f1",
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#cccccc",
         top: "20dp",
         left: "0",
-        width: "33%",
+        width: "25%",
         height: "33%",
-        id: "__alloyId8"
+        id: "__alloyId7"
     });
-    $.__views.index.add($.__views.__alloyId8);
+    $.__views.index.add($.__views.__alloyId7);
     $.__views.btnEnreg = Ti.UI.createButton({
-        top: "20%",
+        top: "10%",
         id: "btnEnreg",
         title: "Enregistrer"
     });
-    $.__views.__alloyId8.add($.__views.btnEnreg);
+    $.__views.__alloyId7.add($.__views.btnEnreg);
     btnRecord_click ? $.__views.btnEnreg.addEventListener("click", btnRecord_click) : __defers["$.__views.btnEnreg!click!btnRecord_click"] = true;
     $.__views.btnFinish = Ti.UI.createButton({
         top: "20%",
@@ -139,20 +140,20 @@ function Controller() {
         id: "btnFinish",
         title: "Arrêter"
     });
-    $.__views.__alloyId8.add($.__views.btnFinish);
+    $.__views.__alloyId7.add($.__views.btnFinish);
     stopRecord ? $.__views.btnFinish.addEventListener("click", stopRecord) : __defers["$.__views.btnFinish!click!stopRecord"] = true;
     $.__views.btnOptions = Ti.UI.createButton({
-        top: "50%",
+        top: "65%",
         id: "btnOptions",
         title: "Configuration"
     });
-    $.__views.__alloyId8.add($.__views.btnOptions);
+    $.__views.__alloyId7.add($.__views.btnOptions);
     config ? $.__views.btnOptions.addEventListener("click", config) : __defers["$.__views.btnOptions!click!config"] = true;
     $.__views.btnTrajets = Ti.UI.createButton({
         id: "btnTrajets",
         title: "Trajets"
     });
-    $.__views.__alloyId8.add($.__views.btnTrajets);
+    $.__views.__alloyId7.add($.__views.btnTrajets);
     showTrajets ? $.__views.btnTrajets.addEventListener("click", showTrajets) : __defers["$.__views.btnTrajets!click!showTrajets"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
@@ -169,12 +170,12 @@ function Controller() {
         width: "70%",
         height: "50%",
         right: 0,
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f1f1f1",
         id: "graph",
         url: "/graph/chart.html"
     });
     $.__views.index.add($.__views.graph);
-    var __alloyId9 = [];
+    var __alloyId8 = [];
     $.__views.eDirigeable = Ti.Map.createAnnotation({
         latitude: 37.390749,
         longitude: -122.081651,
@@ -185,15 +186,15 @@ function Controller() {
         leftButton: "/images/appcelerator_small.png",
         myid: "1"
     });
-    __alloyId9.push($.__views.eDirigeable);
+    __alloyId8.push($.__views.eDirigeable);
     $.__views.mapview = Ti.Map.createView({
         borderWidth: "1px",
-        borderColor: "black",
+        borderColor: "#cccccc",
         top: "20dp",
-        width: "70%",
+        width: "75%",
         height: "50%",
         right: 0,
-        annotations: __alloyId9,
+        annotations: __alloyId8,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",

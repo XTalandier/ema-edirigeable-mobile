@@ -59,6 +59,9 @@ function getInfos() {
 };
 
 function updateData(data) {
+	if(data === null){
+		return;
+	}
 	//data = data.data;
 	var lat = data.latitude;
 	var lon = data.longitude;

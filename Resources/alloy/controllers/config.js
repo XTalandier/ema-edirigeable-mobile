@@ -3,11 +3,9 @@ function Controller() {
         Ti.App.addressip = $.adresseIP.getValue();
         Ti.App.port = $.port.getValue();
         Ti.App.intervalle = $.intervalle.getValue();
-        Ti.App.modeconsole = $.modeConsole.getValue();
         Ti.App.Properties.setString("addressip", Ti.App.addressip);
         Ti.App.Properties.setString("port", Ti.App.port);
         Ti.App.Properties.setInt("intervalle", Ti.App.intervalle);
-        Ti.App.Properties.setBool("modeconsole", Ti.App.modeconsole);
         $.config_win.close();
         $.config_win = null;
     }
@@ -19,7 +17,6 @@ function Controller() {
         $.adresseIP.setValue(Ti.App.addressip);
         $.port.setValue(Ti.App.port);
         $.intervalle.setValue(Ti.App.intervalle);
-        $.modeConsole.setValue(Ti.App.modeconsole);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "config";
@@ -38,7 +35,7 @@ function Controller() {
     $.__views.config_view = Ti.UI.createView({
         backgroundColor: "#fff",
         width: "40%",
-        height: "35%",
+        height: "55%",
         id: "config_view"
     });
     $.__views.config_win.add($.__views.config_view);
@@ -70,29 +67,22 @@ function Controller() {
         id: "__alloyId3"
     });
     $.__views.config_view.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.__alloyId4 = Ti.UI.createButton({
         left: "20%",
-        top: "50%",
-        text: "Mode console :",
+        top: "75%",
+        title: "Annuler",
         id: "__alloyId4"
     });
     $.__views.config_view.add($.__views.__alloyId4);
+    back ? $.__views.__alloyId4.addEventListener("click", back) : __defers["$.__views.__alloyId4!click!back"] = true;
     $.__views.__alloyId5 = Ti.UI.createButton({
-        left: "20%",
-        top: "70%",
-        title: "Annuler",
+        left: "60%",
+        top: "75%",
+        title: "Enregistrer",
         id: "__alloyId5"
     });
     $.__views.config_view.add($.__views.__alloyId5);
-    back ? $.__views.__alloyId5.addEventListener("click", back) : __defers["$.__views.__alloyId5!click!back"] = true;
-    $.__views.__alloyId6 = Ti.UI.createButton({
-        left: "60%",
-        top: "70%",
-        title: "Enregistrer",
-        id: "__alloyId6"
-    });
-    $.__views.config_view.add($.__views.__alloyId6);
-    Save ? $.__views.__alloyId6.addEventListener("click", Save) : __defers["$.__views.__alloyId6!click!Save"] = true;
+    Save ? $.__views.__alloyId5.addEventListener("click", Save) : __defers["$.__views.__alloyId5!click!Save"] = true;
     $.__views.adresseIP = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
         width: "30%",
@@ -117,18 +107,11 @@ function Controller() {
         id: "intervalle"
     });
     $.__views.config_view.add($.__views.intervalle);
-    $.__views.modeConsole = Ti.UI.createSwitch({
-        left: "60%",
-        top: "50%",
-        id: "modeConsole",
-        value: "false"
-    });
-    $.__views.config_view.add($.__views.modeConsole);
     exports.destroy = function() {};
     _.extend($, $.__views);
     initialise();
-    __defers["$.__views.__alloyId5!click!back"] && $.__views.__alloyId5.addEventListener("click", back);
-    __defers["$.__views.__alloyId6!click!Save"] && $.__views.__alloyId6.addEventListener("click", Save);
+    __defers["$.__views.__alloyId4!click!back"] && $.__views.__alloyId4.addEventListener("click", back);
+    __defers["$.__views.__alloyId5!click!Save"] && $.__views.__alloyId5.addEventListener("click", Save);
     _.extend($, exports);
 }
 

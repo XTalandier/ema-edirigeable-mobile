@@ -10,12 +10,15 @@ module.exports = [ {
     key: "logger",
     style: {
         bottom: 0,
-        width: "30%",
+        width: "25%",
         height: "33%",
         left: 0,
         color: "black",
-        backgroundColor: "#CACACA",
+        backgroundColor: "#f1f1f1",
         borderWidth: "1px",
-        borderColor: "black"
+        borderColor: "#cccccc",
+        font: {
+            fontSize: 12
+        }
     }
 } ];

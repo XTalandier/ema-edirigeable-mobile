@@ -22,7 +22,7 @@ function Controller() {
     $.__views.record_view = Ti.UI.createView({
         top: "40%",
         width: "40%",
-        height: "20%",
+        height: "25%",
         backgroundColor: "white",
         opacity: "70%",
         id: "record_view"
@@ -42,7 +42,7 @@ function Controller() {
     $.__views.record_view.add($.__views.nom_trajet);
     $.__views.btnCancel = Ti.UI.createButton({
         left: "30%",
-        bottom: "20%",
+        bottom: "10%",
         id: "btnCancel",
         title: "Annuler"
     });
@@ -50,7 +50,7 @@ function Controller() {
     back ? $.__views.btnCancel.addEventListener("click", back) : __defers["$.__views.btnCancel!click!back"] = true;
     $.__views.btnSave = Ti.UI.createButton({
         left: "60%",
-        bottom: "20%",
+        bottom: "10%",
         id: "btnSave",
         title: "Enregistrer"
     });

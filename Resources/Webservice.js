@@ -41,7 +41,7 @@ Webservice.postJSON = function(params, callback) {
         callback(null);
     };
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send(params);
+    request.send(JSON.stringify(params));
 };
 
 exports.Webservice = Webservice;
