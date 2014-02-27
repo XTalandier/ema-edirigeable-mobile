@@ -15,6 +15,7 @@ function Controller() {
         });
     }
     function updateData(data) {
+        if (null === data) return;
         var lat = data.latitude;
         var lon = data.longitude;
         var tem = data.measuredTemperature;
@@ -82,7 +83,6 @@ function Controller() {
         $.btnFinish.setVisible(false);
     }
     function showTrajets() {
-        alert("ICI");
         Alloy.createController("trajets").getView().open();
     }
     function uniqid(prefix, more_entropy) {
@@ -220,7 +220,7 @@ function Controller() {
         };
         switch (direction) {
           case "haut":
-            cmds.cmdType = "Up";
+            cmds.cmdType = "Forward";
             break;
 
           case "droite":
@@ -228,7 +228,7 @@ function Controller() {
             break;
 
           case "bas":
-            cmds.cmdType = "Down";
+            cmds.cmdType = "Backward";
             break;
 
           case "gauche":

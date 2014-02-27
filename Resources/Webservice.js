@@ -1,7 +1,7 @@
 function Webservice() {}
 
 Webservice.getUrl = function() {
-    return "http://" + Ti.App.addressip + ":" + Ti.App.port + "/getInfos";
+    return "http://" + Ti.App.addressip + ":" + Ti.App.port;
 };
 
 Webservice.getJSON = function(params, callback) {

@@ -1,35 +1,24 @@
-var collection = Alloy.Collections.points;
 var args = arguments[0] || {};
 
-$.init = function() {
-	collection.fetch();
+var points = Alloy.Collections.points;
+points.fetch();
 
-	trajet = collection.get(args.item_id);
+/*
+var points = Alloy.Collections.points;
 
-    $.title.text = book.get('title');
-    $.author.text = book.get('author');
+points.fetch();
 
-    $.win.open();
-};
 
-function closeWindow() {
-    $.win.close();
+*/
+function whereFunction(collection) {
+    return points.where({trajetid:args.item_id});
+}
+function transformFunction(model) {
+	var transform = model.toJSON();
+	transform.title = JSON.stringify(transform);  //'[' + transform.title + ']';
+	// Example of creating a custom attribute, reference in the view using {custom}
+	//transform.custom = transform.title + " by " + transform.author;
+	return transform;
 }
 
-function toggleAuthor(e) {
-    $.toggleAuthor();
-}
-
-$.toggleAuthor = function(){
-    if ($.author.visible === true) {
-        $.toggleAuthorButton.title = 'Show author';
-        $.authorLabel.visible = false;
-        $.author.applyProperties({visible: false});
-    } else {
-        $.toggleAuthorButton.title = 'Hide author';
-        $.authorLabel.visible = true;
-        $.author.applyProperties({visible: true});
-    }
-};
-
-$.init();
+//$.init();
