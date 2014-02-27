@@ -12,6 +12,31 @@ function Controller() {
     $.__views.trajetDetails && $.addTopLevelView($.__views.trajetDetails);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var collection = Alloy.Collections.points;
+    var args = arguments[0] || {};
+    $.init = function() {
+        collection.fetch();
+        trajet = collection.get(args.item_id);
+        $.title.text = book.get("title");
+        $.author.text = book.get("author");
+        $.win.open();
+    };
+    $.toggleAuthor = function() {
+        if (true === $.author.visible) {
+            $.toggleAuthorButton.title = "Show author";
+            $.authorLabel.visible = false;
+            $.author.applyProperties({
+                visible: false
+            });
+        } else {
+            $.toggleAuthorButton.title = "Hide author";
+            $.authorLabel.visible = true;
+            $.author.applyProperties({
+                visible: true
+            });
+        }
+    };
+    $.init();
     _.extend($, exports);
 }
 
