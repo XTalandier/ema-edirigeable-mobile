@@ -7,8 +7,7 @@
 				<Label class="c1 l3">Port :</Label>
 				<Label class="c1 l4">Intervalle (ms) :</Label>  
 				<Label class="c1 l5">Mode console :</Label> 
-				<Button class="c1 l6" title="Enregistrer" onClick="Save"/> <Button class="c2 l6" title="Retour" onClick="back"/>
-			
+				<Button class="c1 l6" title="Annuler" onClick="back"/> <Button class="c2 l6" title="Enregistrer" onClick="Save"/>
 			
 			
 				<TextField class="c2 l2" id="adresseIP"/>
