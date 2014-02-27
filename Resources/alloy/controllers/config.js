@@ -75,7 +75,7 @@ function Controller() {
     $.__views.config_view.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createButton({
         left: "20%",
-        top: "60%",
+        top: "70%",
         title: "Annuler",
         id: "__alloyId5"
     });
@@ -83,7 +83,7 @@ function Controller() {
     back ? $.__views.__alloyId5.addEventListener("click", back) : __defers["$.__views.__alloyId5!click!back"] = true;
     $.__views.__alloyId6 = Ti.UI.createButton({
         left: "60%",
-        top: "60%",
+        top: "70%",
         title: "Enregistrer",
         id: "__alloyId6"
     });
@@ -91,7 +91,7 @@ function Controller() {
     Save ? $.__views.__alloyId6.addEventListener("click", Save) : __defers["$.__views.__alloyId6!click!Save"] = true;
     $.__views.adresseIP = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "8%",
+        width: "30%",
         left: "60%",
         top: "20%",
         id: "adresseIP"
@@ -99,7 +99,7 @@ function Controller() {
     $.__views.config_view.add($.__views.adresseIP);
     $.__views.port = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "8%",
+        width: "30%",
         left: "60%",
         top: "30%",
         id: "port"
@@ -107,7 +107,7 @@ function Controller() {
     $.__views.config_view.add($.__views.port);
     $.__views.intervalle = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "8%",
+        width: "30%",
         left: "60%",
         top: "40%",
         id: "intervalle"

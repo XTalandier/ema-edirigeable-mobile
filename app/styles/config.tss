@@ -7,7 +7,7 @@
 
 "TextField" : {
 	backgroundColor: '#CACACA',
-	width : '8%'
+	width : '30%'
 }
 
 ".c1" : {
@@ -39,5 +39,5 @@
 }
 
 ".l6" : {
-	top : '60%'
+	top : '70%'
 }
