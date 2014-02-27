@@ -37,8 +37,8 @@ function Controller() {
     $.__views.config_win && $.addTopLevelView($.__views.config_win);
     $.__views.config_view = Ti.UI.createView({
         backgroundColor: "#fff",
-        width: "500px",
-        height: "300px",
+        width: "40%",
+        height: "35%",
         id: "config_view"
     });
     $.__views.config_win.add($.__views.config_view);
@@ -79,23 +79,23 @@ function Controller() {
     $.__views.config_view.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createButton({
         left: "20%",
-        top: "60%",
-        title: "Enregistrer",
+        top: "70%",
+        title: "Annuler",
         id: "__alloyId5"
     });
     $.__views.config_view.add($.__views.__alloyId5);
-    Save ? $.__views.__alloyId5.addEventListener("click", Save) : __defers["$.__views.__alloyId5!click!Save"] = true;
+    back ? $.__views.__alloyId5.addEventListener("click", back) : __defers["$.__views.__alloyId5!click!back"] = true;
     $.__views.__alloyId6 = Ti.UI.createButton({
         left: "60%",
-        top: "60%",
-        title: "Retour",
+        top: "70%",
+        title: "Enregistrer",
         id: "__alloyId6"
     });
     $.__views.config_view.add($.__views.__alloyId6);
-    back ? $.__views.__alloyId6.addEventListener("click", back) : __defers["$.__views.__alloyId6!click!back"] = true;
+    Save ? $.__views.__alloyId6.addEventListener("click", Save) : __defers["$.__views.__alloyId6!click!Save"] = true;
     $.__views.adresseIP = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "100px",
+        width: "30%",
         left: "60%",
         top: "20%",
         id: "adresseIP"
@@ -103,7 +103,7 @@ function Controller() {
     $.__views.config_view.add($.__views.adresseIP);
     $.__views.port = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "100px",
+        width: "30%",
         left: "60%",
         top: "30%",
         id: "port"
@@ -111,7 +111,7 @@ function Controller() {
     $.__views.config_view.add($.__views.port);
     $.__views.intervalle = Ti.UI.createTextField({
         backgroundColor: "#CACACA",
-        width: "100px",
+        width: "30%",
         left: "60%",
         top: "40%",
         id: "intervalle"
@@ -127,8 +127,8 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     initialise();
-    __defers["$.__views.__alloyId5!click!Save"] && $.__views.__alloyId5.addEventListener("click", Save);
-    __defers["$.__views.__alloyId6!click!back"] && $.__views.__alloyId6.addEventListener("click", back);
+    __defers["$.__views.__alloyId5!click!back"] && $.__views.__alloyId5.addEventListener("click", back);
+    __defers["$.__views.__alloyId6!click!Save"] && $.__views.__alloyId6.addEventListener("click", Save);
     _.extend($, exports);
 }
 
