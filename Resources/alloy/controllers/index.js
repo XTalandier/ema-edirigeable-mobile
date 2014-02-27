@@ -7,11 +7,11 @@ function Controller() {
                 message: JSON.stringify(data)
             });
             if (null === data) {
-                setTimeout(getInfos, 4e3);
+                setTimeout(getInfos, 1e3);
                 return;
             }
             updateData(data);
-            setTimeout(getInfos, 4e3);
+            setTimeout(getInfos, 1e3);
         });
     }
     function updateData(data) {
@@ -19,6 +19,18 @@ function Controller() {
         var lon = data.longitude;
         var tem = data.measuredTemperature;
         var dID = data.dirigeableId;
+        if (isRecoerding) {
+            point = Alloy.createModel("point", {
+                id: uniqid(),
+                lat: lat,
+                lon: lon,
+                temp: tem,
+                date: new Date(),
+                trajetid: uid
+            });
+            points.add(point);
+            point.save();
+        }
         $.mapview.region = {
             latitude: lat,
             longitude: lon,
@@ -49,12 +61,47 @@ function Controller() {
     function startRecord(nom_trajet) {
         closeWinRecord();
         Ti.App.trajet = nom_trajet;
+        uid = uniqid();
+        trajet = Alloy.createModel("trajet", {
+            id: uid,
+            nom: nom_trajet,
+            debut: new Date()
+        });
+        trajets.add(trajet);
+        trajet.save();
+        trajets.fetch();
+        isRecoerding = true;
         $.btnEnreg.setVisible(false);
         $.btnFinish.setVisible(true);
     }
     function stopRecord() {
+        isRecoerding = false;
+        trajet.set("fin", new Date()).save();
+        trajets.fetch();
         $.btnEnreg.setVisible(true);
         $.btnFinish.setVisible(false);
+    }
+    function showTrajets() {
+        alert("ICI");
+        Alloy.createController("trajets").getView().open();
+    }
+    function uniqid(prefix, more_entropy) {
+        "undefined" == typeof prefix && (prefix = "");
+        var retId;
+        var formatSeed = function(seed, reqWidth) {
+            seed = parseInt(seed, 10).toString(16);
+            if (seed.length > reqWidth) return seed.slice(seed.length - reqWidth);
+            if (reqWidth > seed.length) return Array(1 + (reqWidth - seed.length)).join("0") + seed;
+            return seed;
+        };
+        this.php_js || (this.php_js = {});
+        this.php_js.uniqidSeed || (this.php_js.uniqidSeed = Math.floor(123456789 * Math.random()));
+        this.php_js.uniqidSeed++;
+        retId = prefix;
+        retId += formatSeed(parseInt(new Date().getTime() / 1e3, 10), 8);
+        retId += formatSeed(this.php_js.uniqidSeed, 5);
+        more_entropy && (retId += (10 * Math.random()).toFixed(8).toString());
+        return retId;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -102,6 +149,12 @@ function Controller() {
     });
     $.__views.__alloyId8.add($.__views.btnOptions);
     config ? $.__views.btnOptions.addEventListener("click", config) : __defers["$.__views.btnOptions!click!config"] = true;
+    $.__views.btnTrajets = Ti.UI.createButton({
+        id: "btnTrajets",
+        title: "Trajets"
+    });
+    $.__views.__alloyId8.add($.__views.btnTrajets);
+    showTrajets ? $.__views.btnTrajets.addEventListener("click", showTrajets) : __defers["$.__views.btnTrajets!click!showTrajets"] = true;
     $.__views.dir = Alloy.createWidget("direction", "widget", {
         id: "dir",
         __parentSymbol: $.__views.index
@@ -153,6 +206,11 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var WS = require("Webservice").Webservice;
+    var trajets = Alloy.Collections.trajets;
+    trajets.fetch();
+    var points = Alloy.Collections.points;
+    points.fetch();
+    var isRecoerding = false;
     $.dir.addEventListener("directionChanged", function(direction) {
         Ti.App.fireEvent("logMe", {
             message: "Direction: " + direction
@@ -191,10 +249,13 @@ function Controller() {
     Ti.App.addEventListener("index:startRecord", function(data) {
         startRecord(data.nom_trajet);
     });
+    var trajet = null;
+    var uid = null;
     $.index.open();
     __defers["$.__views.btnEnreg!click!btnRecord_click"] && $.__views.btnEnreg.addEventListener("click", btnRecord_click);
     __defers["$.__views.btnFinish!click!stopRecord"] && $.__views.btnFinish.addEventListener("click", stopRecord);
     __defers["$.__views.btnOptions!click!config"] && $.__views.btnOptions.addEventListener("click", config);
+    __defers["$.__views.btnTrajets!click!showTrajets"] && $.__views.btnTrajets.addEventListener("click", showTrajets);
     _.extend($, exports);
 }
 

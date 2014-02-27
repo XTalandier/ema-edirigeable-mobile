@@ -5,6 +5,7 @@
 			<Button class="bouton_menu" id="btnEnreg" title="Enregistrer" onClick="btnRecord_click" />		
 			<Button class="bouton_menu" id="btnFinish" title="Arrêter" onClick="stopRecord" />
 			<Button class="bouton_menu" id="btnOptions" title="Configuration" onClick="config" />
+			<Button class="bouton_menu" id="btnTrajets" title="Trajets" onClick="showTrajets" />
 <!--
 			<TextField id="txtIP"/>
 			<Button id="btnOptions" title="Configuration" onClick="config" />
