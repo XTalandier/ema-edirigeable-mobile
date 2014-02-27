@@ -1,7 +1,7 @@
 function Webservice() {}
 
 Webservice.getUrl = function() {
-    return "http://" + Ti.App.addressip + ":" + Ti.App.port + "/getInfos";
+    return "http://" + Ti.App.addressip + ":" + Ti.App.port;
 };
 
 Webservice.getJSON = function(params, callback) {
@@ -41,7 +41,7 @@ Webservice.postJSON = function(params, callback) {
         callback(null);
     };
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send(JSON.stringify(params));
+    request.send(params);
 };
 
 exports.Webservice = Webservice;
