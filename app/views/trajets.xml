@@ -1,0 +1,8 @@
+<!--dataFilter="whereFunction" dataTransform="transformFunction"-->
+<Alloy>
+	<Window id="trajetsWin" title="Trajets" platform="android,ios" class="container">
+		<TableView id="trajetTable" dataCollection="trajets" onClick="showDetail">
+			<Require src="rowTrajet"/>
+		</TableView>
+	</Window>
+</Alloy>

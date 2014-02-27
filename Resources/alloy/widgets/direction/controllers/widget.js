@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "direction/" + s : s.substring(0, index) + "/direction/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
@@ -18,48 +18,54 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.dirContainer = Ti.UI.createView({
-        backgroundColor: "#000000",
-        width: "300px",
-        height: "300px",
+        backgroundColor: "#f1f1f1",
+        borderWidth: "1px",
+        borderColor: "#cccccc",
+        width: "25%",
+        height: "34%",
         left: 0,
-        top: "50%",
+        top: "33%",
         id: "dirContainer"
     });
     $.__views.dirContainer && $.addTopLevelView($.__views.dirContainer);
     $.__views.btnHaut = Ti.UI.createImageView({
-        left: "25%",
-        top: 0,
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-haut.png",
-        id: "btnHaut"
+        left: "33.5%",
+        top: "0%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_top.png",
+        id: "btnHaut",
+        image: "/direction/button_top.png"
     });
     $.__views.dirContainer.add($.__views.btnHaut);
     $.__views.btnDroite = Ti.UI.createImageView({
-        left: "50%",
-        top: "25%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-droite.png",
-        id: "btnDroite"
+        top: "33.3%",
+        left: "66.7%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_right.png",
+        id: "btnDroite",
+        image: "/direction/button_right.png"
     });
     $.__views.dirContainer.add($.__views.btnDroite);
     $.__views.btnBas = Ti.UI.createImageView({
-        left: "25%",
-        top: "50%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-bas.png",
-        id: "btnBas"
+        left: "33.5%",
+        top: "66.6%",
+        height: "33.3%",
+        width: "33.4%",
+        backgroundImage: "direction/button_bottom.png",
+        id: "btnBas",
+        image: "/direction/button_bottom.png"
     });
     $.__views.dirContainer.add($.__views.btnBas);
     $.__views.btnGauche = Ti.UI.createImageView({
         left: 0,
-        top: "25%",
-        height: "50%",
-        width: "50%",
-        backgroundImage: "/direction/triangle-gauche.png",
-        id: "btnGauche"
+        top: "33.3%",
+        height: "33.3%",
+        width: "33.3%",
+        backgroundImage: "direction/button_left.png",
+        id: "btnGauche",
+        image: "/direction/button_left.png"
     });
     $.__views.dirContainer.add($.__views.btnGauche);
     exports.destroy = function() {};

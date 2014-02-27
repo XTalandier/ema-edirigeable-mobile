@@ -1,0 +1,20 @@
+<Alloy>
+	<Window class="container" id="config_win" backgroundColor="grey" opacity="100%">
+		<View id="config_view">
+			
+				<Label class="c1 l1">Configuration</Label> 
+				<Label class="c1 l2">Adresse IP :</Label> 
+				<Label class="c1 l3">Port :</Label>
+				<Label class="c1 l4">Intervalle (ms) :</Label>  
+				<!--<Label class="c1 l5">Mode console :</Label> -->
+				<Button class="c1 l6" title="Annuler" onClick="back"/> <Button class="c2 l6" title="Enregistrer" onClick="Save"/>
+			
+			
+				<TextField class="c2 l2" id="adresseIP"/>
+				<TextField class="c2 l3" id="port"/>
+				<TextField class="c2 l4" id="intervalle"/>
+				<!--<Switch class="c2 l5" id="modeConsole" value="false"/>-->
+			
+		</View>
+	</Window>
+</Alloy>

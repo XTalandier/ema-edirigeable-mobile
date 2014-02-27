@@ -1,0 +1,8 @@
+<!---->
+<Alloy>
+	<Window id="pointsWin" title="Points" platform="android,ios" class="container">
+		<TableView id="pointsTable" dataCollection="points" dataFilter="whereFunction" dataTransform="transformFunction">
+			<Require src="rowPoint"/>
+		</TableView>
+	</Window>
+</Alloy>

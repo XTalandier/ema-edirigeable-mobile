@@ -1,13 +1,54 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#f1f1f1",
 },
+"#config_win": {
+	backgroundColor:"#f1f1f1"
+},
+
+".menu": {
+	backgroundColor:"#f1f1f1",
+	borderWidth: '1px',
+	borderColor: '#cccccc',
+	top: '20dp',
+	left: '0',
+	width: '25%',
+	height: '33%',
+},
+
 "#mapview": {
-	width: '800dp',
-	height: '400dp',
+	borderWidth: '1px',
+	borderColor: '#cccccc',
+	top: '20dp',
+	width: '75%',
+	height: '50%',
 	right: 0,
-	bottom: '300px'
 },
+
 "#graph": {
-	top: '30dp',
-	height: '400px'
+	top: '60%',
+	width: '70%',
+	height: '50%',
+	right: 0,
+	backgroundColor: '#f1f1f1',
+},
+"#txtIP" : {
+	top: '0%',
+	width: '80%'
+}
+"#btnEnreg" : {
+	top: '20%',
+	width: '80%'
+}
+
+"#btnEnreg": {
+	top: "10%",
+}
+
+"#btnOptions": {
+	top: "65%",
+}
+
+"#btnFinish": {
+	top: "20%",
+	visible: "false",
 }

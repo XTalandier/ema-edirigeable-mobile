@@ -1,9 +1,15 @@
 "#logger": {
-	left   : 0,
 	bottom : 0,
-	height : '300px',
-	right  : 0,
+	width: '25%',
+	height : '33%',
+	left  : 0,
+	
 	//width: Ti.UI.SIZE,
-	color  : '#ffffff',
-	backgroundColor: '#000000'
+	color  : 'black',
+	backgroundColor: '#f1f1f1',
+	borderWidth: '1px',
+	borderColor: '#cccccc',
+	font: {
+        fontSize: 12,
+    }
 }

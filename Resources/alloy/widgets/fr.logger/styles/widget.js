@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "fr.logger/" + s : s.substring(0, index) + "/fr.logger/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 module.exports = [ {
@@ -9,11 +9,16 @@ module.exports = [ {
     priority: 100000.0008,
     key: "logger",
     style: {
-        left: 0,
         bottom: 0,
-        height: "300px",
-        right: 0,
-        color: "#ffffff",
-        backgroundColor: "#000000"
+        width: "25%",
+        height: "33%",
+        left: 0,
+        color: "black",
+        backgroundColor: "#f1f1f1",
+        borderWidth: "1px",
+        borderColor: "#cccccc",
+        font: {
+            fontSize: 12
+        }
     }
 } ];

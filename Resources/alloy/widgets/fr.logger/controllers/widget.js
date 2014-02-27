@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "fr.logger/" + s : s.substring(0, index) + "/fr.logger/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
@@ -15,19 +15,29 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.logger = Ti.UI.createTextArea({
-        left: 0,
         bottom: 0,
-        height: "300px",
-        right: 0,
-        color: "#ffffff",
-        backgroundColor: "#000000",
+        width: "25%",
+        height: "33%",
+        left: 0,
+        color: "black",
+        backgroundColor: "#f1f1f1",
+        borderWidth: "1px",
+        borderColor: "#cccccc",
+        font: {
+            fontSize: 12
+        },
         id: "logger",
         editable: "false"
     });
     $.__views.logger && $.addTopLevelView($.__views.logger);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var cpt = 0;
     Ti.App.addEventListener("logMe", function(e) {
+        if (++cpt > 10) {
+            $.logger.value = 0;
+            cpt = 0;
+        }
         Ti.API.debug(e.message);
         $.logger.value = "[" + new Date() + "] " + e.message + "\n" + $.logger.value;
     });
